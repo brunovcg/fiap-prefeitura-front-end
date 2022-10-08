@@ -3,13 +3,11 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
   :root {
-    --primary: #23d146;
-    --secondary: #5d9aef;
-    --tertiary: #f28c9f;
-    --light-font: #fff;
-    --dark-font: #727272;
-    --border: #dddddd;
-    --main-background: #fff;
+    --primary: #044FA1;
+    --secondary: ##FBDC51 ;
+    --light-font: #ffffff;
+    --dark-font: #aaaaaa;
+
     --transparent-dark: rgb(0, 0, 0,0.7);
   }
 

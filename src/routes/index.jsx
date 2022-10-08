@@ -10,11 +10,12 @@ function Router() {
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
+      <Route path="auth" element={<Auth />} />
       <Route path="session">
         <Route index element={<Session />} />
         <Route path="buildings" element={<Buildings />} />
       </Route>
-      <Route path="auth" element={<Auth />} />
+     
     </Routes>
   );
 }
