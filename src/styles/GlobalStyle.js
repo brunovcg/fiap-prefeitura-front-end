@@ -4,9 +4,13 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --primary: #044FA1;
-    --secondary: ##FBDC51 ;
+    --secondary: #FBDC51 ;
     --light-font: #ffffff;
+    --confirm:#3bf770 ;
+    --cancel: #f73b3b ;
+    --light-background: #ffffff;
     --dark-font: #aaaaaa;
+    --border: #aaaaaa ;
 
     --transparent-dark: rgb(0, 0, 0,0.7);
   }
@@ -29,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
     .App{
       display: flex;
       justify-content: center;
+      width: 100vw;
+      min-height: 100vh;
     }
 
     ol, ul {

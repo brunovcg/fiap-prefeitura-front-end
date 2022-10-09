@@ -1,4 +1,4 @@
-import Icon from "../icon";
+import { Icon } from "../";
 import ModalStyled from "./styles";
 
 function Modal({ title, content, hideCloseIcon = false, show, setShow }) {

@@ -53,6 +53,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - React-router-dom (V6)
 - React-hook-form
 - Yup
+- Hookform/resolvers
 
 ## O Projeto
 
