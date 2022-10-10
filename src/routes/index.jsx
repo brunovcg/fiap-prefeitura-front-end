@@ -33,7 +33,7 @@ function Router() {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={logged(<Home />)} />
       <Route path="auth" element={logged(<Auth />)} />
       <Route path="session">
         <Route index element={protect(<Session />)} />

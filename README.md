@@ -26,7 +26,7 @@ E nele coloque a seguinte linha de código, temos na raiz um arquivo .env.exempl
 back-end em localhost.
 
 ```js
-REACT_APP_BACKEND_URL = "a_raiz_do_endereco_do_back_end";
+REACT_APP_BACKEND_URL = "http://localhost:8000";
 ```
 
 ## Instalar Dependências
@@ -42,7 +42,7 @@ yarn start
 ```
 
 O projeto vai rodar no localhost:3000 em dev
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000] to view it in your browser.
 
 ## Ferramentas e principais bibliotecas utilizadas:
 
@@ -61,10 +61,26 @@ obs: Para poder navegar nas páginas que necessitam de autenticacão, fazer o si
 
 ### Página Home
 
+Se o usuário possuir o token, será redirecionado página Session.
+Lading page do sistema, aqui o usuário receberá informacões iniciais e poderá ir para a página de Autenticação (Auth)
+
 ### Página Auth
 
-### Página Sessions
+Se o usuário possuir o token, será redirecionado página Session.
+Nesta página podemos fazer o login ou o registro (signup) do usuário caso não seja registrado.
 
-### Página Buildings
+### Página Session (Protegida)
+
+Se o usuário não possuir o token, será redirecionado página HOME.
+Após o login, o usuário será redirecionado para está página. A depender do seu tipo de interesse essa página exibe conteúdo personalizado
+Podemos ir até a página de imóveis (buildings)
+
+### Página Buildings (Protegida)
+
+Se o usuário não possuir o token, será redirecionado página HOME.
+Aqui o usuário poderá fazer o CRUD dos seus imóveis.
+Seus imóveis são listados assim que a página é renderizada.
 
 ### Not Found
+
+Caso o usuário digite um endpoint que não exista, será redirecionado para está página.
