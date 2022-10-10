@@ -1,4 +1,5 @@
 import StyledFormField from "./styles";
+import { useState } from "react";
 
 function FormField({
   label,
@@ -11,31 +12,37 @@ function FormField({
   name,
   placeholder,
   onChange,
+  value = "",
   register = () => {},
 }) {
+  const [inputValue, setInputValue] = useState(value);
+  const handleChange = (e) => {
+    onChange?.(e.target.value);
+    setInputValue(e.target.value);
+  };
+
   return (
     <StyledFormField>
       {label && <label>{label}</label>}
       {fieldType === "select" ? (
         <select
           disabled={disabled}
-          onChange={onChange}
+          onChange={(evt) => console.log(evt.target.value)}
           {...register(name)}
-          defaultValue="default"
+          defaultValue={value}
         >
           {options.map((item, index) => (
-            <option key={index} value={item[optionsValue]}>
-              {item[optionsValue]}
-            </option>
+            <option key={index}>{item[optionsValue]}</option>
           ))}
         </select>
       ) : (
         <input
           type={type}
-          onChange={onChange}
+          value={inputValue}
           disabled={disabled}
           placeholder={placeholder}
           {...register(name)}
+          onChange={handleChange}
         />
       )}
       <div className="error"> {error}</div>

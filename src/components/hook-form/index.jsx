@@ -33,6 +33,7 @@ const HookForm = ({
             register={register}
             options={item.options}
             onChange={item.onChange}
+            value={item.value}
           />
         ))}
 

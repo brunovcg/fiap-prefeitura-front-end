@@ -34,7 +34,6 @@ function Signup({setIsLogin}) {
     {
       name: "persona",
       label: "Interesse",
-      placeholder: "Escolha um interesse",
       fieldType: "select",
       options: personas,
     },

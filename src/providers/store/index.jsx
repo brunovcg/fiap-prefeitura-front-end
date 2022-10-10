@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
-import useAPI from "../../services/useApi";
+import { createContext, useContext, useState, useEffect } from "react";
+import apiService from "../../services/api";
 import {
   TokenStorageKey,
   HTTPStatusCode,
@@ -28,14 +22,14 @@ export const StoreProvider = ({ children }) => {
   const [neighborhood, setNeighborhood] = useState([]);
   const [userBuildings, setAllUserBuildings] = useState([]);
 
-  const { apiServices } = useAPI(token);
+  const { services } = apiService(token);
 
   const {
     personasServices,
     userServices,
     neighborhoodServices,
     buildingsServices,
-  } = apiServices;
+  } = services;
 
   const navigate = useNavigate();
 
@@ -48,6 +42,7 @@ export const StoreProvider = ({ children }) => {
 
   const logoutUser = () => {
     sessionStorage.clear();
+    setToken("");
   };
 
   const loginUser = (data) => {
@@ -76,18 +71,52 @@ export const StoreProvider = ({ children }) => {
       });
   };
 
+  const createBuilding = (payload) => {
+    buildingsServices.create(payload).then((res) => {
+      setAllUserBuildings([res.data, ...userBuildings]);
+      toast.success("Imóvel Adicionado");
+    });
+  };
+
   const getAllNeighborhood = () => {
     neighborhoodServices.getAll().then((res) => setNeighborhood(res.data));
   };
 
-  const getAllUserBuildings = useCallback(() => {
+  const getAllUserBuildings = () => {
     buildingsServices
-      .getAllByUser(userId, token)
+      .getAllByUser()
       .then((res) => setAllUserBuildings(res.data));
-  }, [buildingsServices, userId, token]);
+  };
 
   const getUserInfo = () => {
-    userServices.getOne(userId, token).then((res) => setUser(res.data));
+    userServices.getOne().then((res) => setUser(res.data));
+  };
+
+  const deleteBuilding = (matricula, callbackSuccess = () => {}) => {
+    buildingsServices.delete(matricula).then((res) => {
+      toast.success("Imóvel deletado");
+      callbackSuccess();
+      const filteredBuilding = userBuildings.filter(
+        (item) => item.matricula !== matricula
+      );
+      setAllUserBuildings(filteredBuilding);
+    });
+  };
+
+  const updateBuilding = (matricula, payload) => {
+    buildingsServices.update(matricula, payload).then((res) => {
+      toast.success("Imóvel atualizado");
+      const newList = [...userBuildings];
+      let updatedBuilding = userBuildings.find(
+        (item) => item.matricula === matricula
+      );
+      const updatedBuildingIndex = newList.findIndex(
+        (item) => item.matricula === updatedBuilding.matricula
+      );
+      updatedBuilding = { ...updatedBuilding, ...payload };
+      newList[updatedBuildingIndex] = updatedBuilding;
+      setAllUserBuildings(newList);
+    });
   };
 
   useEffect(() => {
@@ -96,14 +125,16 @@ export const StoreProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    getUserInfo();
-  }, [token]);
-
-  useEffect(() => {
     if (userId) {
       getAllUserBuildings();
     }
-  }, [getAllUserBuildings, userId]);
+
+    const userLoaded = !!Object.keys(user).length;
+
+    if (userId && !userLoaded) {
+      getUserInfo();
+    }
+  }, [user, userId]);
 
   return (
     <StoreContext.Provider
@@ -115,6 +146,11 @@ export const StoreProvider = ({ children }) => {
         user,
         neighborhood,
         userBuildings,
+        createBuilding,
+        userId,
+        token,
+        deleteBuilding,
+        updateBuilding,
       }}
     >
       {children}

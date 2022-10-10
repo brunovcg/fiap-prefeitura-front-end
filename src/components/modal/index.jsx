@@ -1,8 +1,9 @@
 import { Icon } from "../";
 import ModalStyled from "./styles";
+import ReactDOM from "react-dom";
 
 function Modal({ title, content, hideCloseIcon = false, show, setShow }) {
-  return (
+  return ReactDOM.createPortal(
     <>
       {show && (
         <ModalStyled>
@@ -21,7 +22,7 @@ function Modal({ title, content, hideCloseIcon = false, show, setShow }) {
           </section>
         </ModalStyled>
       )}
-    </>
+    </>, document.getElementById("modal")
   );
 }
 
