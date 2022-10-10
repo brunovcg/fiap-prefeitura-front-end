@@ -18,7 +18,7 @@ renderizadas pelo front-end para auxiliar nos cadastros.
 
 - Devemos ter o Node.JS instalado no computador.
 - Caso formos usar o YARN como gerenciador, deve-se ser baixado e instalado, mas pode-se simplemente usar o NPM.
-- Back-end configurado: https://github.com/brunovcg/fiap-prefeitura-back-end
+- Back-end configurado: <https://github.com/brunovcg/fiap-prefeitura-back-end>
 
 ## Variáveis de Ambiente
 
