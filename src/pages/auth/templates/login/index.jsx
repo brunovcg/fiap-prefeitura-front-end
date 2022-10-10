@@ -21,18 +21,13 @@ function Login() {
     },
   ];
 
-  const action = ({ username, password }) => {
-    const data = {
-      username,
-      password,
-    };
-
+  const onSubmit = (data) => {
     loginUser(data);
   };
 
   return (
     <StyledLogin>
-      <HookForm action={action} fields={fields} schema={schema} />
+      <HookForm onSubmit={onSubmit} fields={fields} schema={schema} />
     </StyledLogin>
   );
 }

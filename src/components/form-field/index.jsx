@@ -6,9 +6,11 @@ function FormField({
   fieldType = "input",
   type = "text",
   options,
-  optionsValue = "name",
+  optionsValue = "id",
+  optionsTitle = "name",
   disabled,
   error,
+  autoComplete = false,
   name,
   placeholder,
   onChange,
@@ -32,11 +34,14 @@ function FormField({
           defaultValue={value}
         >
           {options.map((item, index) => (
-            <option key={index}>{item[optionsValue]}</option>
+            <option key={index} value={item[optionsValue]}>
+              {item[optionsTitle]}
+            </option>
           ))}
         </select>
       ) : (
         <input
+          autoComplete={autoComplete ? "on" : "off"}
           type={type}
           value={inputValue}
           disabled={disabled}

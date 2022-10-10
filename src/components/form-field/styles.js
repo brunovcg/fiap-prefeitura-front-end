@@ -7,6 +7,8 @@ const StyledFormField = styled.div`
 
   label {
     margin-left: 5px;
+    font-weight: bold;
+    color: var(--dark-font);
   }
 
   select,

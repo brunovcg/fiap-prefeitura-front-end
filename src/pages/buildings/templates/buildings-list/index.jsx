@@ -15,12 +15,6 @@ function BuildingList() {
     navigate("/session");
   };
 
-  const addButtonTitle = (
-    <div>
-      <span>Adicione um imóvel</span>
-    </div>
-  );
-
   const handleModal = () => {
     setShowAddModal((state) => !state);
   };
@@ -30,13 +24,16 @@ function BuildingList() {
       <Button
         variant="confirm"
         icon="add"
-        title={addButtonTitle}
+        title={<span>Cadastrar imóvel</span>}
         onClick={handleModal}
       />
       <div className="list">
         {userBuildings?.map((item) => (
           <BuilingRow key={item.id} item={item} />
         ))}
+        {!userBuildings.length && (
+          <span className="no-buildings">Não existem Imóveis cadastrados</span>
+        )}
       </div>
       <Modal
         title="Novo imóvel"

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --confirm:#3bf770 ;
     --cancel: #f73b3b ;
     --light-background: #ffffff;
-    --dark-font: #aaaaaa;
+    --dark-font: #595959;
     --border: #aaaaaa ;
 
     --transparent-dark: rgb(0, 0, 0,0.7);
@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     font-size: 1rem;
     vertical-align: baseline;
+    font-family: 'Open Sans', sans-serif;
     }
 
     body {

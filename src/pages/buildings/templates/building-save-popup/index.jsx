@@ -34,8 +34,7 @@ function BuildingSavePopup({ data, onSubmit, setShow }) {
     },
   ];
 
-  const action = ({ bairro, tamanho, endereco }) => {
-    const payload = { bairro, tamanho, endereco };
+  const handleSubmit = (payload) => {
     if (data) {
       onSubmit(data.matricula, payload);
     } else {
@@ -43,6 +42,7 @@ function BuildingSavePopup({ data, onSubmit, setShow }) {
     }
     setShow(false);
   };
+
   return (
     <StyledBuildingSavePopup>
       {data && (
@@ -51,7 +51,7 @@ function BuildingSavePopup({ data, onSubmit, setShow }) {
           {data.matricula}
         </div>
       )}
-      <HookForm action={action} fields={fields} schema={schema} />
+      <HookForm onSubmit={handleSubmit} fields={fields} schema={schema} />
     </StyledBuildingSavePopup>
   );
 }

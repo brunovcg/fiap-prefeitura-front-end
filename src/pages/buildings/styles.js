@@ -25,7 +25,7 @@ const StyledBuildings = styled.div`
     }
 
     h2 {
-      margin-top: 70px;
+      margin: 60px 0 30px 0;
       font-size: 35px;
       color: var(--primary);
     }

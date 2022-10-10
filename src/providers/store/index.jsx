@@ -57,15 +57,15 @@ export const StoreProvider = ({ children }) => {
     });
   };
 
-  const signupUser = (data, callbackSuccess) => {
+  const signupUser = (data) => {
     userServices
       .signup(data)
       .then((res) => {
         toast.success("Usuário criado");
-        callbackSuccess(true);
       })
       .catch((err) => {
-        if (err.response.status === HTTPStatusCode.Conflict) {
+        console.log(err);
+        if (err.response?.status === HTTPStatusCode.Conflict) {
           toast.error("CPF já cadastrado");
         }
       });
@@ -128,9 +128,7 @@ export const StoreProvider = ({ children }) => {
     if (userId) {
       getAllUserBuildings();
     }
-
     const userLoaded = !!Object.keys(user).length;
-
     if (userId && !userLoaded) {
       getUserInfo();
     }

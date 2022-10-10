@@ -36,6 +36,7 @@ const StyledAuth = styled.div`
 
     .message-container {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 40px 0 20px 0;
@@ -47,12 +48,20 @@ const StyledAuth = styled.div`
       p {
         font-size: 20px;
         margin-right: 10px;
+        margin-bottom: 20px;
         font-weight: bold;
 
         @media (max-width: ${`${MobileBreakpoint}px`}) {
           margin-right: 0;
           margin-bottom: 20px;
         }
+      }
+
+      .home-button-container {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
       }
     }
   }

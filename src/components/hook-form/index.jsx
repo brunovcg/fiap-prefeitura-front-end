@@ -6,7 +6,8 @@ import StyledForm from "./styles";
 const HookForm = ({
   schema,
   fields,
-  action,
+  onSubmit,
+  exclude = [],
   buttonDisabled,
   buttonTitle = "Submeter",
 }) => {
@@ -17,6 +18,17 @@ const HookForm = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const action = ({ ...all }) => {
+    const data = { ...all };
+
+    if (exclude.length) {
+      for (const item of exclude) {
+        delete data[item];
+      }
+    }
+    onSubmit(data);
+  };
 
   return (
     <StyledForm onSubmit={handleSubmit(action)}>

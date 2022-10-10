@@ -1,12 +1,15 @@
 import StyledButton from "./styles";
 import { Icon } from "../../components";
+import React from "react";
 
-function Button({ title, icon, ...rest }) {
+function Button({ title, injectClass, icon, ...rest }) {
   return (
-    <StyledButton {...rest}>
-      {icon && <Icon icon={icon} />}
-      {title}
-    </StyledButton>
+    <div className={injectClass ?? ""}>
+      <StyledButton {...rest}>
+        {icon && <Icon icon={icon} />}
+        {title}
+      </StyledButton>
+    </div>
   );
 }
 

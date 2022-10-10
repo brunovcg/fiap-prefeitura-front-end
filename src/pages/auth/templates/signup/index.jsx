@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useStore } from "../../../../providers/store";
 import StyledSignup from "./styles";
 
-function Signup({setIsLogin}) {
+function Signup({ setIsLogin }) {
   const { signupUser, personas } = useStore();
 
   const schema = yup.object().shape({
@@ -14,20 +14,28 @@ function Signup({setIsLogin}) {
       .string()
       .required("Necessário confirmar")
       .oneOf([yup.ref("password")], "Você não digitou a mesma senha"),
-    persona: yup.string().required("Interesse é obrigatório"),
+    persona: yup.number().required("Interesse é obrigatório"),
     telefone: yup.string().required("Telefone é necessário"),
-    email: yup.string().email("Não é um formato de e-mail válido").required("E-mail é necessário"),
+    email: yup
+      .string()
+      .email("Não é um formato de e-mail válido")
+      .required("E-mail é necessário"),
   });
 
   const fields = [
     { name: "username", label: "CPF", placeholder: "Digite o CPF" },
     { name: "name", label: "Nome", placeholder: "Digite o Nome" },
-    { name: "password", label: "Password", placeholder: "Digite a senha", type: "password" },
+    {
+      name: "password",
+      label: "Senha",
+      placeholder: "Digite a senha",
+      type: "password",
+    },
     {
       name: "confirmPassword",
-      label: "Password",
+      label: "Confirme a senha",
       placeholder: "Confirme sua senha",
-      type: "password" 
+      type: "password",
     },
     { name: "telefone", label: "Telefone", placeholder: "Digite o telefone" },
     { name: "email", label: "E-mail", placeholder: "Digite o email" },
@@ -39,22 +47,19 @@ function Signup({setIsLogin}) {
     },
   ];
 
-  const action = ({ username, password, name, persona, email, telefone }) => {
-    const data = {
-      username,
-      password,
-      name,
-      persona,
-      email,
-      telefone,
-    };
-
-    signupUser(data, setIsLogin);
+  const onSubmit = (data) => {
+    signupUser(data);
+    setIsLogin(true);
   };
 
   return (
     <StyledSignup>
-      <HookForm action={action} fields={fields} schema={schema} />
+      <HookForm
+        onSubmit={onSubmit}
+        exclude={["confirmPassword"]}
+        fields={fields}
+        schema={schema}
+      />
     </StyledSignup>
   );
 }

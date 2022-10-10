@@ -8,7 +8,7 @@ const StyledBuilingList = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
   align-items: center;
-  max-height:80%;
+  max-height: 80%;
   width: 100%;
 
   .list {
@@ -18,6 +18,12 @@ const StyledBuilingList = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+
+    .no-buildings {
+      color: var(--cancel);
+      font-size: 30px;
+      margin: 30px 0;
+    }
   }
 
   @media (max-width: ${`${MobileBreakpoint}px`}) {
