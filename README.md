@@ -54,12 +54,12 @@ ou
 npm run start
 ```
 
-O projeto vai rodar no localhost:3000 em dev
+O projeto vai rodar no localhost:3000 em dev.
 Abra [http://localhost:3000] no navegador para visualizar.
 
 ## Ferramentas e principais bibliotecas utilizadas
 
-- React hooks
+- React hooks - Manipulação do ciclo de vida.
 - Context API - Criar uma store global.
 - Styled Components - Abstrair CSS.
 - Axios - Requisições HTTP.
@@ -99,15 +99,18 @@ Abra [http://localhost:3000] no navegador para visualizar.
 
       - index.js: a conexão do App com o HTML
 
- - .env: este arquivo contém informação que podem variar por ambiente, por isso devem ser criados sempre que o projeto é baixado ou deployado. Não esta incluso no GIT.
+ - .env: este arquivo contém informação que podem variar por ambiente, por isso devem ser criados sempre que o projeto
+  é baixado ou deployado. Não esta incluso no GIT.
 
  - .env.example: arquivo que serve de exemplo de quais variáveis de ambiente são necessárias no .env
 
  - .gitignore: Arquivo que informa ao git quais arquivos e diretórios devem ser ignorados.
 
- - package.json: Arquivo de configuração do NODE.JS, informa quais as dependências do porjeto, que serão baixadas e armazenadas no node_modules.
+ - package.json: Arquivo de configuração do NODE.JS, informa quais as dependências do porjeto, que serão baixadas
+  e armazenadas no node_modules.
 
- - node_modules: Onde são armazenadas libs externas, por ser muito pesado é ignorado pelo GIT, mas com as informações do package.json, ao comando este diretório será criado e todas as dependências externas armazenadas aqui.
+ - node_modules: Onde são armazenadas libs externas, por ser muito pesado é ignorado pelo GIT, mas com as informações do package.json,
+  ao comando este diretório será criado e todas as dependências externas armazenadas aqui.
 
  - README.md: Este documento, que é a documentação desta aplicação.
 ```
