@@ -69,6 +69,7 @@ Abra [http://localhost:3000] no navegador para visualizar.
 - Yup - Validação de formulários.
 - Hookform/resolvers - Integração hook-form e Yup.
 - React-toastify - Exibição de mensagens em toast (divs sobrepostas e temporárias).
+- DayJS - Manipular datas.
 
 ## Estrutura
 

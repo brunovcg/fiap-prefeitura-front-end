@@ -7,7 +7,10 @@ function Signup({ setIsLogin }) {
   const { signupUser, personas } = useStore();
 
   const schema = yup.object().shape({
-    username: yup.string().required("CPF Necessário"),
+    username: yup
+      .string()
+      .length(11, "Esse não é um CPF válido")
+      .required("CPF Necessário"),
     name: yup.string().required("Nome Necessário"),
     password: yup.string().required("Senha é necessária"),
     confirmPassword: yup

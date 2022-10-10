@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     .App{
       display: flex;
       justify-content: center;
-      width: 100vw;
+      /* width: 100vw; */
       min-height: 100vh;
     }
 
