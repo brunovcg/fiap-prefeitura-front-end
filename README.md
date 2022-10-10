@@ -18,6 +18,7 @@ renderizadas pelo front-end para auxiliar nos cadastros.
 
 - Devemos ter o Node.JS instalado no computador.
 - Caso formos usar o YARN como gerenciador, deve-se ser baixado e instalado, mas pode-se simplemente usar o NPM.
+- Back-end configurado: https://github.com/brunovcg/fiap-prefeitura-back-end
 
 ## Variáveis de Ambiente
 
@@ -126,7 +127,7 @@ Em cada diretório normalmente teremos como seu nome o nome do componente, dentr
 
 ```
 
-## O Projeto
+## O Projeto e suas páginas
 
 obs: Para poder navegar nas páginas que necessitam de autenticacão, fazer o signup e depois o login.
 
