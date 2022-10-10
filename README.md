@@ -17,6 +17,7 @@ renderizadas pelo front-end para auxiliar nos cadastros.
 ## Pré-requisitos
 
 - Devemos ter o Node.JS instalado no computador.
+- Caso formos usar o YARN como gerenciador, deve-se ser baixado e instalado, mas pode-se simplemente usar o NPM.
 
 ## Variáveis de Ambiente
 
@@ -35,25 +36,92 @@ REACT_APP_BACKEND_URL = "http://localhost:8000";
 yarn
 ```
 
+ou
+
+```shell
+npm install
+```
+
 ## Rodar o Projeto
 
 ```shell
 yarn start
 ```
 
+ou
+
+```shell
+npm run start
+```
+
 O projeto vai rodar no localhost:3000 em dev
 Open [http://localhost:3000] to view it in your browser.
 
-## Ferramentas e principais bibliotecas utilizadas:
+## Ferramentas e principais bibliotecas utilizadas
 
 - React hooks
-- Context API
-- Styled Components
-- Axios
-- React-router-dom (V6)
-- React-hook-form
-- Yup
-- Hookform/resolvers
+- Context API - Criar uma store global.
+- Styled Components - Abstrair CSS.
+- Axios - Requisições HTTP.
+- React-router-dom (V6) - Roteamento de páginas.
+- React-hook-form - Formulários.
+- Yup - Validação de formulários.
+- Hookform/resolvers - Integração hook-form e Yup.
+- React-toastify - Exibição de mensagens em toast (divs sobrepostas e temporárias).
+
+## Estrutura
+
+- Organização do código
+
+```txt
+  - public: HTML
+  - src: código fonte do projeto.
+      - assets: arquivos anexos (imagens etc).
+
+      - components: componentes reutilizáveis na aplicação.
+
+      - constants: constantes da aplicação para fácil modificação de regras de negócio.
+
+      - helpers: funções para ajudar no tratamento de dados que pode ser reutilizáveis.
+
+      - pages: componentes que são renderizados como peça principal de cada endpoint.
+
+      - providers: são colocados provedores para toda a aplicação.
+          - store: armazenado o estado global da aplicação, com estados e funções para modifica-lós.
+
+      - routes: sistema de rotas da aplicação, alterando a url e o conteudo exibido.
+
+      - services: centraliza as chamadas da api, com suas configurações.
+
+      - styles: armazenado os estilos globais da aplicação.
+
+      - App.js: a raiz do aplicativo
+
+      - index.js: a conexão do App com o HTML
+
+ - .env: este arquivo contém informação que podem variar por ambiente, por isso devem ser criados sempre que o projeto é baixado ou deployado. Não esta incluso no GIT.
+
+ - .env.example: arquivo que serve de exemplo de quais variáveis de ambiente são necessárias no .env
+
+ - .gitignore: Arquivo que informa ao git quais arquivos e diretórios devem ser ignorados.
+
+ - package.json: Arquivo de configuração do NODE.JS, informa quais as dependências do porjeto, que serão baixadas e armazenadas no node_modules.
+
+ - node_modules: Onde são armazenadas libs externas, por ser muito pesado é ignorado pelo GIT, mas com as informações do package.json, ao comando este diretório será criado e todas as dependências externas armazenadas aqui.
+
+ - README.md: Este documento, que é a documentação desta aplicação.
+```
+
+- Organização dos diretórios:
+
+```txt
+Em cada diretório normalmente teremos como seu nome o nome do componente, dentro destes:
+
+- index.jsx => Código font React.
+
+- styles.js => Código em js que abstrai o CSS utlizando o styled components.
+
+```
 
 ## O Projeto
 
@@ -63,6 +131,11 @@ obs: Para poder navegar nas páginas que necessitam de autenticacão, fazer o si
 
 Se o usuário possuir o token, será redirecionado página Session.
 Lading page do sistema, aqui o usuário receberá informacões iniciais e poderá ir para a página de Autenticação (Auth)
+
+- Autenticacão
+  Esse app faz uso do de autenticacão em sua comunicação com o back-end por meio de token, que é armazenado na session storage.
+  Algumas páginas só podem ser acessadas com esse token, obviamente a nível apenas de exibicão, caso tente-se forçar um token no storage, a página pode até
+  ser exibida, porém toda requisição importante tera validação de token, que ira retornar um status 401 Unathorazed neste caso.
 
 ### Página Auth
 
