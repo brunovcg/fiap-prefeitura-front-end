@@ -158,6 +158,11 @@ Podemos ir até a página de imóveis (buildings)
 Se o usuário não possuir o token, será redirecionado página HOME.
 Aqui o usuário poderá fazer o CRUD dos seus imóveis.
 Seus imóveis são listados assim que a página é renderizada.
+A partir de um imóvel, pode-se visualizar um boleto para impressão
+
+### Página Billets (Protegida)
+
+Página para visualizar boleto para impressão
 
 ### Not Found
 
