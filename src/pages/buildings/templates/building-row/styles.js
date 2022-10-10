@@ -25,6 +25,13 @@ const StyledBuilingRow = styled.div`
       flex-direction: column;
       width: 100%;
     }
+
+    .building-iptu {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
   }
 
   .building-row-buttons {
@@ -36,7 +43,7 @@ const StyledBuilingRow = styled.div`
 
     @media (max-width: ${`${MobileBreakpoint}px`}) {
       height: 100%;
-      top:0 ;
+      top: 0;
       display: flex;
       align-items: center;
     }

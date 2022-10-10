@@ -19,6 +19,8 @@ function Auth() {
     navigate("/");
   };
 
+  const icon = isLogin ? "how_to_reg" : "login";
+
   return (
     <StyledAuth>
       <div className="template-container">
@@ -30,6 +32,7 @@ function Auth() {
             variant="secondary"
             onClick={handleClick}
             title={buttonTitle}
+            icon={icon}
           />
           <div className="home-button-container">
             <div>ou vá para página inicial</div>

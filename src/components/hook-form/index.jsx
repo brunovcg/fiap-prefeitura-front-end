@@ -10,6 +10,7 @@ const HookForm = ({
   exclude = [],
   buttonDisabled,
   buttonTitle = "Submeter",
+  buttonIcon = "done",
 }) => {
   const {
     register,
@@ -51,6 +52,7 @@ const HookForm = ({
 
       <div>
         <Button
+          icon={buttonIcon}
           variant="confirm"
           title={buttonTitle}
           type="submit"

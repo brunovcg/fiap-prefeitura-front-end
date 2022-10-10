@@ -4,6 +4,7 @@ import Auth from "../pages/auth";
 import Home from "../pages/home";
 import Buildings from "../pages/buildings";
 import NotFound from "../pages/not-found/";
+import Billet from "../pages/billet";
 import { useStore } from "../providers/store/";
 import { useEffect } from "react";
 
@@ -37,7 +38,10 @@ function Router() {
       <Route path="auth" element={logged(<Auth />)} />
       <Route path="session">
         <Route index element={protect(<Session />)} />
-        <Route path="buildings" element={protect(<Buildings />)} />
+        <Route path="buildings">
+          <Route index element={protect(<Buildings />)} />
+          <Route path="billet" element={protect(<Billet />)} />
+        </Route>
       </Route>
     </Routes>
   );

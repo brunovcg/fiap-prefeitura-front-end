@@ -4,16 +4,21 @@ import { useState } from "react";
 import BuildingSavePopup from "../../templates/building-save-popup";
 import BuildingDeletePopup from "../../templates/building-delete-popup";
 import { useStore } from "../../../../providers/store";
+import { toBRL } from "../../../../helpers/currency";
+import { useNavigate } from "react-router-dom";
 
 function BuilingRow({ item }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const { updateBuilding } = useStore();
 
   const handleEditModal = () => {
     setShowEditModal(true);
   };
+
+  const handleView = () => navigate("billet/", { state: { building: item } });
 
   const handleDeleteModal = () => {
     setShowDeleteModal(true);
@@ -33,6 +38,15 @@ function BuilingRow({ item }) {
         </div>
         <div>
           <b>Endereço:</b> {item.endereco}
+        </div>
+        <div className="building-iptu">
+          <b>IPTU:</b> {toBRL(item.iptu)}{" "}
+          <Button
+            onClick={handleView}
+            icon="description"
+            variant="primary"
+            title="visualizar"
+          />
         </div>
       </div>
       <div className="building-row-buttons">
