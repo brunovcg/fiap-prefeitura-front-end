@@ -55,7 +55,7 @@ npm run start
 ```
 
 O projeto vai rodar no localhost:3000 em dev
-Open [http://localhost:3000] to view it in your browser.
+Abra [http://localhost:3000] no navegador para visualizar.
 
 ## Ferramentas e principais bibliotecas utilizadas
 
