@@ -12,10 +12,12 @@ function Billet() {
   const navigate = useNavigate();
   const location = useLocation();
   const building = location.state.building;
-  const { user } = useStore();
+  const { user, neighborhood } = useStore();
   const { matricula, bairro, endereco, tamanho, iptu } = building;
   const handlePrint = () => window.print();
   const handleBack = () => navigate("/session/buildings/");
+
+  const neighborhoodName = neighborhood.find((it) => Number(it.id) === Number(bairro))?.name;
 
   return (
     <StyledBillet>
@@ -56,10 +58,10 @@ function Billet() {
         <div className="secondline">
           <div className="cell">
             <b>Bairro: </b>
-            {bairro}
+            {neighborhoodName}
           </div>
           <div className="cell">
-            <b>Tamanho:</b>
+            <b>Tamanho: </b>
             {tamanho}m²
           </div>
           <div className="cell">

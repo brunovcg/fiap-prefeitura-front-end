@@ -7,12 +7,12 @@ import { useStore } from "../../../../providers/store";
 import { toBRL } from "../../../../helpers/currency";
 import { useNavigate } from "react-router-dom";
 
-function BuilingRow({ item }) {
+function BuildingRow({ item }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const navigate = useNavigate();
 
-  const { updateBuilding } = useStore();
+  const { updateBuilding, neighborhood } = useStore();
 
   const handleEditModal = () => {
     setShowEditModal(true);
@@ -24,6 +24,8 @@ function BuilingRow({ item }) {
     setShowDeleteModal(true);
   };
 
+  const neighborhoodName = neighborhood.find((it) => Number(it.id) === Number(item.bairro)).name;
+
   return (
     <StyledBuilingRow>
       <div className="building-row-info">
@@ -34,7 +36,7 @@ function BuilingRow({ item }) {
           <b>Área:</b> {item.tamanho}m²
         </div>
         <div>
-          <b>Bairro:</b> {item.bairro}
+          <b>Bairro:</b> {neighborhoodName}
         </div>
         <div>
           <b>Endereço:</b> {item.endereco}
@@ -88,4 +90,4 @@ function BuilingRow({ item }) {
   );
 }
 
-export default BuilingRow;
+export default BuildingRow;

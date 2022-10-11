@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     --light-background: #ffffff;
     --dark-font: #595959;
     --border: #aaaaaa ;
+    --border-light: #ededed ;
 
     --transparent-dark: rgb(0, 0, 0,0.7);
   }
@@ -34,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
     .App{
       display: flex;
       justify-content: center;
-      /* width: 100vw; */
       min-height: 100vh;
     }
 

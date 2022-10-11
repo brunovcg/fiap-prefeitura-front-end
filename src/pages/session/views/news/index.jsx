@@ -1,10 +1,14 @@
+import TemplateNews from "../templates/template-news";
+import TemplateRegulations from "../templates/template-regulations";
+import TemplateTaxes from "../templates/template-taxes";
 import StyledNews from "./styles";
 
-function News({ navigate }) {
+function News() {
   return (
     <StyledNews>
-      <h2>NEWS</h2>
-      <button onClick={navigate}>Meus Imóveis</button>
+      <TemplateNews />
+      <TemplateRegulations />
+      <TemplateTaxes />
     </StyledNews>
   );
 }

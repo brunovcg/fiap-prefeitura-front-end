@@ -54,7 +54,7 @@ export const StoreProvider = ({ children }) => {
       setToken(userToken);
       setUser({ ...rest });
       navigate("/session");
-    });
+    }).catch(err=> toast.error("CPF ou/e senha invalidos"));
   };
 
   const signupUser = (data) => {
